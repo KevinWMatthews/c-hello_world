@@ -4,7 +4,7 @@ all:
 
 .PHONY: clean
 clean:
-	rm main
+	rm -f main
 
 .PHONY: run
 run:
