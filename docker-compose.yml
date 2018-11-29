@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  dev:
+    # Paths for bind mounts must be absolute and are therefor system-specific.
+    # Configure paths in an .env file (or as system environment variables).
+    env_file: .env
+    build:
+      context: .
+      args:
+        # Allow end-user to override userid/groupid during build
+        # Default arguments must be provided here
+        userid: ${USERID:-1000}       # Set to USER to inherit from your system
+        gid: ${GROUPID:-1000}         # Set to GROUPS to inherit from your system?
+        src_dir: ${SRC_DIR:?Must set environment variable SRC_DIR}
+        build_dir: ${BUILD_DIR:?Must set environment variable BUILD_DIR}
+    volumes:
+      # Mount the source code and build output in the container.
+      # This allows for easy changes since data persists on the host.
+      - type: bind
+        source: ${SRC_DIR}
+        target: /usr/src/c_hello_world
+      - type: bind
+        source: ${BUILD_DIR}
+        target: /usr/src/build_c_hello_world
+
+    tty: true
+    stdin_open: true
