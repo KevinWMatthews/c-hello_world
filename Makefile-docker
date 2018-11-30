@@ -1,0 +1,113 @@
+# Import the environment variables that will be used to launch the containers
+include .env
+
+CURRENT_DIRECTORY := $(notdir $(shell pwd))
+IMAGE_NAME ?= ${CURRENT_DIRECTORY}_compile
+CONTAINER_NAME ?= ${CURRENT_DIRECTORY}_compile
+
+USERID ?= 1000
+GROUPID ?= 1000
+
+# For information on variable expansion, see:
+# https://www.gnu.org/software/make/manual/make.html#Flavors
+DOCKER_RUN := docker run \
+	--rm \
+	--interactive --tty \
+	--mount type=bind,src=${SRC_PATH_HOST},dst=${SRC_PATH_TARGET} \
+	--mount type=bind,src=${BUILD_PATH_HOST},dst=${BUILD_PATH_TARGET} \
+	--user ${USERID}:${GROUPID} \
+	--workdir ${BUILD_PATH_TARGET} \
+	${IMAGE_NAME}
+
+
+# Use spaces in the help text - tabs often render as 8 spaces on the console, which messes up alignment
+define USAGE
+usage: make <command>
+
+Make commands
+   all              Run 'make'
+   cmake            Run 'cmake' to generate make scripts
+   clean            Run 'make clean'
+   compile          Run 'make', same as target 'all'
+
+docker-compose commands
+   build            Build/rebuild the image
+   run              Run the image's default command
+
+Generally useful commands
+   check-env        Verify the .env file
+   shell            Shell into the build directory
+   help             This help text
+endef
+
+
+
+# Targets to execute Make/CMake commands within the container
+.PHONY: all
+all: check-env
+	${DOCKER_RUN} make
+
+.PHONY: cmake
+cmake: check-env
+	${DOCKER_RUN} cmake ${SRC_PATH_TARGET}
+
+.PHONY: clean
+clean: check-env
+	${DOCKER_RUN} make clean
+
+.PHONY: compile
+compile: check-env
+	${DOCKER_RUN} make
+
+# No provision to install/uninstall - this requries a container with sudo
+
+bin-%: check-env
+	@echo 'Executing: bin/$*'
+	${DOCKER_RUN} ./bin/$*
+
+
+
+# Targets for the container itself
+
+# This Makefile requires several environment variables in order to synchronize
+# with the settings in docker-compose.
+# These should be specified in the .env file.
+.PHONY: check-env
+check-env:
+# Indent $(error) with tabs to run only for the specified target.
+# Indent using spaces to run when Makefile is read, regardless of target.
+ifndef SRC_PATH_TARGET
+	$(error Must set environment variable SRC_PATH_TARGET)
+endif
+ifndef BUILD_PATH_TARGET
+	$(error Must set environment variable BUILD_PATH_TARGET)
+endif
+# Check variables that only docker-compose needs, for user convenience
+ifndef SRC_PATH_HOST
+	$(error Must set environment variable SRC_PATH_HOST)
+endif
+ifndef BUILD_PATH_HOST
+	$(error Must set environment variable BUILD_PATH_HOST)
+endif
+
+.PHONY: shell
+shell:
+	${DOCKER_RUN} bash
+
+
+
+# Targets for standard docker commands
+.PHONY: build
+build: check-env
+	docker build --tag ${IMAGE_NAME} .
+
+.PHONY: run
+run: check-env
+	${DOCKER_RUN}
+
+
+# "Help! I need somebody"
+.PHONY: help
+help:
+	$(info ${USAGE})
+	@echo ''
