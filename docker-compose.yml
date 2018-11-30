@@ -10,7 +10,7 @@ services:
         # Allow end-user to override userid/groupid during build
         # Default arguments must be provided here
         userid: ${USERID:-1000}       # Set to USER to inherit from your system
-        gid: ${GROUPID:-1000}         # Set to GROUPS to inherit from your system?
+        groupid: ${GROUPID:-1000}     # Set to GROUPS to inherit from your system?
     volumes:
       # Mount the source code and build output in the container.
       # This allows for easy changes since data persists on the host.
