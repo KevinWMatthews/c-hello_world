@@ -5,7 +5,7 @@ This project can be built and run using Docker.
 
 ## Background
 
-The provided `Dockerfile` will build an image that has CMake and gcc installed.
+The provided `Dockerfile` will build a Docker image that has CMake and gcc installed.
 The resulting container can then execute `make` commands.
 
 The source and build directories are bind-mounted to this container,

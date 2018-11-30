@@ -1,6 +1,8 @@
 # c_hello_world
 
-Print `Hello, World!` using C. Compile with your [system's tools](system-tools.md)
+Print `Hello, World!` using C.
+
+Compile with your [system's tools](system-tools.md),
 a [Docker container](docker.md), or [docker-compose](docker-compose.md).
 
 
@@ -28,7 +30,7 @@ For your convenience, an out-of-tree build directory already exists.
 The directory structure is as follows:
 
 ```bash
-.
+c_hello_world
 ├── build_c_hello_world
 ├── c_hello_world
 ├── docker
@@ -43,6 +45,6 @@ In detail,
 
 See one of the following:
 
-  * [System](system-tools.md)
+  * [system tools](system-tools.md)
   * [Docker](docker.md)
   * [docker-compose](docker-compose.md)
