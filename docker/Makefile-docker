@@ -41,12 +41,11 @@ Generally useful commands
 endef
 
 
+### Targets
+.DEFAULT_GOAL := all
 
-# Change this once you're comfortable with this Makefile
-.DEFAULT_GOAL := help
 
-
-### Make commands
+### Targets for Make commands
 # Targets to execute Make/CMake commands within the container
 .PHONY: all
 all: check-env
