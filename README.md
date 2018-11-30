@@ -30,7 +30,13 @@ The provided `docker-compose.yml` file will create and run a container that has 
 
 Source code and build results persist on the host with the permissions that you specify.
 
-First, create a `.env` file so docker-compose knows where to find the source and build directories:
+First,
+```
+$ cd docker
+```
+All of the following commands should be run from this directory.
+
+Next, create a `.env` file so docker-compose knows where to find the source and build directories:
 ```
 $ cp example.env .env
 ```
@@ -75,7 +81,13 @@ The provided `Dockerfile` will build an image that has CMake and gcc installed. 
 
 The source code and build results are bind-mounted to this container, allowing them persist on the host with the permissions that you specify.
 
-First, create a `.env` file so docker-compose knows where to find the source and build directories:
+First,
+```
+$ cd docker
+```
+All of the following commands should be run from this directory.
+
+Next, create a `.env` file so docker-compose knows where to find the source and build directories:
 ```
 $ cp example.env .env
 ```
