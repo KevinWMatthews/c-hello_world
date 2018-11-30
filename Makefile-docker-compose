@@ -1,0 +1,133 @@
+# Import the environment variables that were used to launch the containers
+include .env
+
+# This must match the value defined in docker-compose.yml
+SERVICE_NAME = compile
+
+# For information on variable expansion, see:
+# https://www.gnu.org/software/make/manual/make.html#Flavors
+DOCKER_EXEC := docker-compose exec --workdir ${BUILD_PATH_TARGET} ${SERVICE_NAME}
+
+
+# Use spaces in the help text - tabs often render as 8 spaces on the console, which messes up alignment
+define USAGE
+usage: make <command>
+
+Make commands
+   all              Run 'make'
+   cmake            Run 'cmake' to generate make scripts
+   clean            Run 'make clean'
+   compile          Run 'make', same as target 'all'
+
+Executables
+   bin-<program>    Run the given program.
+                    Must exist in the target's ${BUILD_PATH_TARGET}/bin/ directory
+
+docker-compose commands
+   build            Build/rebuild the image
+   down             Stop and remove all containers
+   restart          Restart existing containers
+   start            Start existing containers
+   stop             Stop but keep all containers
+   up               Create new containers, start them in the background
+
+Generally useful commands
+   check-env        Verify the .env file
+   shell            Shell into the build directory
+   help             This help text
+endef
+
+
+### Make commands
+
+.DEFAULT_GOAL := help
+
+
+# Targets to execute Make/CMake commands within the container
+.PHONY: all
+all: check-env
+	${DOCKER_EXEC} make
+
+.PHONY: cmake
+cmake: check-env
+	${DOCKER_EXEC} cmake ${SRC_PATH_TARGET}
+
+.PHONY: clean
+clean: check-env
+	${DOCKER_EXEC} make clean
+
+.PHONY: compile
+compile: check-env
+	${DOCKER_EXEC} make
+
+# No provision to install/uninstall - this requries a container with sudo
+
+bin-%: check-env
+	@echo 'Executing: bin/$*'
+	${DOCKER_EXEC} ./bin/$*
+
+
+
+# Targets for the container itself
+
+# This Makefile requires several environment variables in order to synchronize
+# with the settings in docker-compose.
+# These should be specified in the .env file.
+.PHONY: check-env
+check-env:
+# Indent $(error) with tabs to run only for the specified target.
+# Indent using spaces to run when Makefile is read, regardless of target.
+ifndef SERVICE_NAME
+	$(error Must set local variable SERVICE_NAME to the name of the docker-compose service)
+endif
+ifndef SRC_PATH_TARGET
+	$(error Must set environment variable SRC_PATH_TARGET)
+endif
+ifndef BUILD_PATH_TARGET
+	$(error Must set environment variable BUILD_PATH_TARGET)
+endif
+# Check variables that only docker-compose needs, for user convenience
+ifndef SRC_PATH_HOST
+	$(error Must set environment variable SRC_PATH_HOST)
+endif
+ifndef BUILD_PATH_HOST
+	$(error Must set environment variable BUILD_PATH_HOST)
+endif
+
+.PHONY: shell
+shell:
+	${DOCKER_EXEC} bash
+
+
+
+# Targets for standard docker-compose commands
+.PHONY: build
+build: check-env
+	docker-compose build
+
+.PHONY: down
+down: check-env
+	docker-compose down
+
+.PHONY: restart
+restart: check-env
+	docker-compose restart
+
+.PHONY: start
+start: check-env
+	docker-compose start
+
+.PHONY: stop
+stop: check-env
+	docker-compose stop
+
+.PHONY: up
+up: check-env
+	docker-compose up -d
+
+
+# "Help! I need somebody"
+.PHONY: help
+help:
+	$(info ${USAGE})
+	@echo ''
