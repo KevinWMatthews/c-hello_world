@@ -42,6 +42,11 @@ endef
 
 
 
+# Change this once you're comfortable with this Makefile
+.DEFAULT_GOAL := help
+
+
+### Make commands
 # Targets to execute Make/CMake commands within the container
 .PHONY: all
 all: check-env
@@ -67,7 +72,7 @@ bin-%: check-env
 
 
 
-# Targets for the container itself
+### Targets for the container itself
 
 # This Makefile requires several environment variables in order to synchronize
 # with the settings in docker-compose.
@@ -96,7 +101,7 @@ shell:
 
 
 
-# Targets for standard docker commands
+### Targets for standard docker commands
 .PHONY: build
 build: check-env
 	docker build --tag ${IMAGE_NAME} .

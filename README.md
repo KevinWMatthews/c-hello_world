@@ -14,7 +14,7 @@ If your system already has CMake and gcc installed, you can configure and build 
 ```
 $ cd build_c_hello_world
 $ cmake ../c_hello_world
-$ make
+$ make all
 ```
 
 Then run the resulting executable using:
@@ -51,7 +51,7 @@ $ make up
 Configure and compile the project using:
 ```
 $ make cmake
-$ make
+$ make all
 ```
 
 Run the resulting executable using:
