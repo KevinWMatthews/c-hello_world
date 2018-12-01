@@ -20,7 +20,7 @@ the image. It also allows build results to persist on the host
 
 ## Prerequisites
 
-  * Docker v17.05
+  * Docker v17.05+
 
 
 ## Setup

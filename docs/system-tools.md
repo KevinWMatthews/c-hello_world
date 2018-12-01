@@ -15,8 +15,8 @@ the project can be configured and built easily.
 
 ## Prerequisites
 
+  * CMake 3.5+
   * gcc
-  * CMake 3.5
 
 
 ## Setup

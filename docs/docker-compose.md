@@ -16,8 +16,8 @@ Source code and build results persist on the host with the permissions that you 
 
 ## Prerequesites
 
-  * Docker v17.05
-  * docker-compose v1.22
+  * Docker v17.05+
+  * docker-compose v1.22+
 
 
 ## Setup
