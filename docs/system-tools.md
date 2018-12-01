@@ -4,7 +4,7 @@ title: CMake/gcc
 ---
 
 
-Use CMake and gcc to compile, build, and run.
+Use your system's CMake and gcc to compile, build, and run.
 
 
 ## Background
