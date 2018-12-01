@@ -1,4 +1,10 @@
 theme: minima
+title: c/hello_world
+author: Kevin W Matthews
+description:
+  Hello World in C.
+  Configured with CMake.
+  Run with Docker.
 header_pages:
   - system-tools.md
   - docker.md
