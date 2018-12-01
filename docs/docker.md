@@ -3,9 +3,8 @@ layout: page
 title: docker
 ---
 
-## Compiling with Docker
 
-This project can be built and run using Docker.
+Use docker to compile, build, and run.
 
 
 ## Background
@@ -26,7 +25,7 @@ the image. It also allows build results to persist on the host
 
 ## Setup
 
-All setup and build commands should be run from the docker directory:
+All commands should be run from the docker directory:
 
 ```
 $ cd docker

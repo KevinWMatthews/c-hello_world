@@ -3,16 +3,32 @@ layout: page
 title: CMake/gcc
 ---
 
-## Compiling with System Tools
+
+Use CMake and gcc to compile, build, and run.
+
+
+## Background
 
 If your system already has compatible versions of CMake and gcc installed,
 the project can be configured and built easily.
 
 
-Enter the out-of-tree build directory:
+## Prerequisites
+
+  * gcc
+  * CMake 3.5
+
+
+## Setup
+
+All commands should be run from the out-of-tree build directory:
+
 ```
 $ cd build_c_hello_world
 ```
+
+
+## Compile Source
 
 Configure the build system:
 ```

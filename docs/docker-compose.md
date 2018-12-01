@@ -3,9 +3,8 @@ layout: page
 title: docker-compose
 ---
 
-## Compiling with docker-compose
 
-This project can be built and run using docker-compose.
+Use docker-compose to compile, build, and run.
 
 
 ## Background
@@ -23,7 +22,7 @@ Source code and build results persist on the host with the permissions that you 
 
 ## Setup
 
-All setup and build commands should be run from the docker directory:
+All commands should be run from the docker directory:
 
 ```
 $ cd docker
