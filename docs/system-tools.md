@@ -1,4 +1,9 @@
-# Compile with CMake and gcc
+---
+layout: page
+title: CMake/gcc
+---
+
+## Compiling with System Tools
 
 If your system already has compatible versions of CMake and gcc installed,
 the project can be configured and built easily.

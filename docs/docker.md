@@ -1,4 +1,9 @@
-# Compile with Docker
+---
+layout: page
+title: docker
+---
+
+## Compiling with Docker
 
 This project can be built and run using Docker.
 

@@ -1,4 +1,9 @@
-# Compile with docker-compose
+---
+layout: page
+title: docker-compose
+---
+
+## Compiling with docker-compose
 
 This project can be built and run using docker-compose.
 

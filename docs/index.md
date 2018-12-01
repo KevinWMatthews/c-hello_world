@@ -1,4 +1,7 @@
-# c_hello_world
+---
+layout: page
+title: Hello, World! in C
+---
 
 Print `Hello, World!` using C.
 
