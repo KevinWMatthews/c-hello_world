@@ -1,52 +1,45 @@
 ---
 layout: page
-title: Hello, World! in C
+title: Hello, World - C, CMake, Docker
 ---
 
 Print `Hello, World!` using C.
 
-Compile with your [system's tools](system-tools.md),
-a [Docker container](docker.md), or [docker-compose](docker-compose.md).
+Configure with CMake. Run with Docker.
 
 
-## Getting Started
+## Background
 
-These instructions outline several ways that this project can be built and run.
+Configuring and compiling a project can be complex, even for a simple code base. This project illustrates three different approaches, all using CMake:
 
-
-### Prerequisites
-
-  * CMake 3.5.1
-  * gcc
-
-or
-  * Docker
-  * docker-compose (optional)
+  * your [system's tools](system-tools.md)
+  * a [Docker container](docker.md)
+  * [docker-compose](docker-compose.md)
 
 
-### Background
+### Directory Structure
 
-The build system for this project is configured using CMake.
-It was designed for an out-of-tree build - build artifacts do not linger in the source directory.
-For your convenience, an out-of-tree build directory already exists.
+This project is designed to use an out-of-tree build. This prevents build artifacts from polluting the source directory.
 
-The directory structure is as follows:
+
+The directory structure is:
 
 ```bash
 c_hello_world
 ├── build_c_hello_world
 ├── c_hello_world
-├── docker
+└── docker
 ```
 
 In detail,
   * `c_hello_world/` contains the source code.
-  * `build_c_hello_world/` will hold build artifacts. `make` commands should be run here.
-  * `docker/` contains files for Docker and docker-compose, should you choose to use them.
+  * `build_c_hello_world/` will hold build artifacts.
+  * `docker/` contains files for Docker and docker-compose.
+
 
 ### Build Instructions
 
-See one of the following:
+For detailed build instructions, see one of the following:
 
   * [system tools](system-tools.md)
   * [Docker](docker.md)
