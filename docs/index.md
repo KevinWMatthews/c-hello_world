@@ -32,6 +32,7 @@ c_hello_world
 ```
 
 In detail,
+
   * `c_hello_world/` contains the source code.
   * `build_c_hello_world/` will hold build artifacts.
   * `docker/` contains files for Docker and docker-compose.
