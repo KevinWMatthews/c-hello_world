@@ -1,5 +1,3 @@
 # Ignore environment files
-.env
-
-# Ignore generic Makefile
-Makefile
+*.env
+!example.env
