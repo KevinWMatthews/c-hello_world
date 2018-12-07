@@ -7,10 +7,11 @@ usage()
     echo "Run a Docker container with source and build directories mounted"
     echo ""
     echo "Configure with a .env file or environment variables"
+    echo "Unrecognized options are passed to 'docker run'"
     echo ""
     echo "Options:"
-    echo "  -e, --env string    Location of environment file"
-    echo "  -h, --help          This help text"
+    echo "  -E, --script-env string     Location of environment file"
+    echo "  -h, --help                  This help text"
     echo ""
     echo "Environment variables:"
     echo "   IMAGE_NAME         Name of the Docker image to run"
@@ -23,21 +24,18 @@ usage()
     echo "   GROUPID            GID used in the container (default: current host GUI)"
 }
 
-if [[ $# -gt 2 ]]; then
-    usage
-    exit 1
-fi
-
 # Parse command-line arguments
+options=()
+positional_args=()
 while [[ $# -gt 0 ]]; do
     arg="$1"
     case $arg in
-        -e|--env)
+        -E|--script-env)
             env_file="$2"
             shift
             shift
             ;;
-        --env=*)
+        --script-env=*)
             # Substring removal - remove up to and including the '='
             env_file="${arg#*=}"
             shift
@@ -46,9 +44,20 @@ while [[ $# -gt 0 ]]; do
             usage
             exit 1
             ;;
+        -*)
+            # Store options to pass to docker run
+            echo $1
+            echo $2
+            options+=("$1")
+            options+=("$2")
+            echo ${options[@]}
+            shift
+            shift
+            ;;
         *)
-            usage
-            exit 1
+            # Store positional args to pass to docker run
+            positional_args+=("$1")
+            shift
             ;;
     esac
 done
@@ -57,7 +66,7 @@ if [[ -r "${env_file}" ]]; then
     echo "Reading env file: ${env_file}"
 	source ${env_file}
 else
-    echo 'Not reading env fle'
+    echo 'Not reading env file'
 fi
 
 image_name=${IMAGE_NAME:?Must specify IMAGE_NAME as environment variable}
@@ -73,6 +82,9 @@ build_path_target=${BUILD_PATH_TARGET:=?Must specify BUILD_PATH_TARGET as enviro
 
 echo "Running docker image '${image_name}' as '${container_name}'"
 echo "Building in '$(basename ${build_path_host})'"
+echo "Options: ${options[@]}"
+echo "Arguments: ${positional_args[@]}"
+echo ""
 command="docker run \
     --rm --name ${container_name} \
     --interactive --tty \
@@ -80,6 +92,8 @@ command="docker run \
     --mount type=bind,src=${src_path_host},dst=${src_path_target} \
 	--mount type=bind,src=${build_path_host},dst=${build_path_target} \
     --workdir ${build_path_target} \
-	${image_name}"
+    ${options[@]}
+	${image_name}
+    ${positional_args[@]}"
 echo ${command}
-${command}
+#${command}
