@@ -2,7 +2,9 @@
 
 usage()
 {
-	echo "usage: $(basename $0) [IMAGE_NAME] [DOCKERFILE_DIR]"
+	echo "usage: $(basename $0) IMAGE DOCKER_DIR"
+	echo ""
+	echo "Build the IMAGE from the Dockerfile in DOCKER_DIR"
 }
 
 if [[ $# -ne 2 ]]; then
