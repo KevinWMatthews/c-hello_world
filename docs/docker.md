@@ -31,9 +31,9 @@ How to build and run the Docker image.
 ### Build Docker Image
 
 Build the Docker image that is the basis for containers:
-
-```
-$ docker build --tag <image_name> <relative/path/to/dockerfile/dir>
+```bash
+# docker build --tag <image_name> <relative/path/to/dockerfile/dir>
+$ docker build --tag c_hello_world Dockerfiles/
 ```
 
 For more information, see `docker build --help`.
@@ -51,7 +51,7 @@ This can be done by hand each time the container is run, or use the provided
 helper script with an environment file.
 
 Create a `.env` file:
-```
+```bash
 $ cp example.env .env
 ```
 
@@ -59,8 +59,9 @@ Edit `.env` to be appropriate to your system.
 Note that Docker requires absolute paths.
 
 Run the container using:
-```
-$ ENV_FILE=.env ./docker_run.sh <image_name>
+```bash
+# ENV_FILE=<env_file> ./docker_run.sh <image_name>
+$ ENV_FILE=.env ./docker_run.sh c_hello_world
 ```
 
 Any options that are passed to `docker_run.sh` are passed directly to `docker run`,
@@ -72,20 +73,24 @@ excepting `--help`.
 Once within the container, compile the source as usual.
 
 Configure the project's build system using:
-
-```
-$ cmake <path/to/source>
+```bash
+# cmake <path/to/source>
+$ cmake ../c_hello_world
 ```
 
 Compile the project using:
-
-```
+```bash
 $ make
 ```
 
 Run the resulting executable using:
-```
+```bash
 # ./bin/<your_executable>
 $ ./bin/hello_world
 Hello, World!
+```
+
+When finished, stop the container using:
+```bash
+$ exit
 ```
