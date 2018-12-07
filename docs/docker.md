@@ -25,19 +25,30 @@ the image. It also allows build results to persist on the host
 
 ## Setup
 
-All commands should be run from the docker directory:
+How to build and run the Docker image.
+
+
+### Build Docker Image
+
+Build the Docker image that is the basis for containers:
 
 ```
-$ cd docker
+$ docker build --tag <image_name> <relative/path/to/dockerfile/dir>
 ```
 
-You may run Docker commands manually but it is easier to use the provided Makefile:
-```
-$ cp Makefile-docker Makefile
-```
+For more information, see `docker build --help`.
 
-This Makefile uses several environment variables to allow system-specific paths
-to the source and build directories.
+The base [docker-gcc](https://hub.docker.com/_/gcc/) image is fairly large,
+but all subsequent builds can reuse this image.
+
+
+### Run Docker Container
+
+A docker image can be run simply using `docker run <image_name>`, but we want
+to customize several aspects of this container.
+
+This can be done by hand each time the container is run, or use the provided
+helper script with an environment file.
 
 Create a `.env` file:
 ```
@@ -47,43 +58,34 @@ $ cp example.env .env
 Edit `.env` to be appropriate to your system.
 Note that Docker requires absolute paths.
 
-
-## Build Docker Image
-
-Build the Docker image that is the basis for containers:
-
+Run the container using:
 ```
-$ make build
+$ ENV_FILE=.env ./docker_run.sh <image_name>
 ```
 
-The base [docker-gcc](https://hub.docker.com/_/gcc/) image is fairly large,
-but all subsequent builds can reuse this image.
+Any options that are passed to `docker_run.sh` are passed directly to `docker run`,
+excepting `--help`.
 
 
-## Compile Source
+## Compile and Run
+
+Once within the container, compile the source as usual.
 
 Configure the project's build system using:
-```
-$ make cmake
-```
 
-This spins up a container, generates the build system in your build directory
-from the `CMakeLists.txt` file in the source directory, and then exits the container.
-The build system files should persist after the container exits.
+```
+$ cmake <path/to/source>
+```
 
 Compile the project using:
+
 ```
 $ make
 ```
 
 Run the resulting executable using:
 ```
-# make bin-<your_executable>
-$ make bin-hello_world
+# ./bin/<your_executable>
+$ ./bin/hello_world
 Hello, World!
-```
-
-For more details, see:
-```
-$ make help
 ```
