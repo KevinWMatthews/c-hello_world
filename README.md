@@ -11,7 +11,6 @@ This project demonstrates how to compile with CMake and gcc in three different e
 
   * System CMake/gcc
   * Docker
-  * docker-compose
 
 
 ## Build Instructions
