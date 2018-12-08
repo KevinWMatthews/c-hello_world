@@ -15,8 +15,8 @@ It can be compiled with CMake and gcc using two different environments:
 
 ## Project Structure
 
-  * `c_hello_world/` subdirectory contains the source code.
-  * `build_c_hello_world/` will hold build artifacts.
+  * `hello_world/` subdirectory contains the source code.
+  * `build_hello_world/` will hold build artifacts.
   * `Dockerfiles/` contains files for Docker.
   * `docker_run.sh` is a wrapper around the `docker run` command.
   * `docs/` contains the source for the documentation pages

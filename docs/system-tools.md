@@ -24,19 +24,19 @@ the project can be configured and built easily.
 All commands should be run from the out-of-tree build directory:
 
 ```
-$ cd build_c_hello_world
+$ cd build_hello_world
 ```
 
 
-## Compile Source
+## Compile and Run
 
 Configure the build system:
 ```
-$ cmake ../c_hello_world
+$ cmake ../hello_world
 ```
 This generates the build system in your build directory
 from the `CMakeLists.txt` file in the specified source directory,
-`c_hello_world`.
+`hello_world`.
 
 Compile:
 ```
@@ -45,6 +45,6 @@ $ make
 
 Run the resulting executable using:
 ```
-$ ./build_c_hello_world/bin/hello_world
+$ ./bin/hello_world
 Hello, World!
 ```

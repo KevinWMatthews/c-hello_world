@@ -23,8 +23,8 @@ A high-level view of the project is:
 
 ```bash
 .
-├── build_c_hello_world/
-├── c_hello_world/
+├── build_hello_world/
+├── hello_world/
 ├── Dockerfiles/
 ├── docker_run.sh
 ├── docs/
@@ -33,9 +33,9 @@ A high-level view of the project is:
 └── README.md
 ```
 
-`c_hello_world` contains the source code.
+`hello_world` contains the source code.
 
-`build_c_hello_world` is an out-of-tree build directory. Build commands are run
+`build_hello_world` is an out-of-tree build directory. Build commands are run
 here and build output is generated here, leaving the source directory untouched.
 This allows you to compile for different configurations (release, debug),
 different architectures (x86, ARM, etc), or even with different compilers!

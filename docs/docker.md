@@ -75,7 +75,7 @@ Once within the container, compile the source as usual.
 Configure the project's build system using:
 ```bash
 # cmake <path/to/source>
-$ cmake ../c_hello_world
+$ cmake ../hello_world
 ```
 
 Compile the project using:
