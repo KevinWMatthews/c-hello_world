@@ -7,7 +7,7 @@ Print `Hello, World!` using C. Compile with you system's CMake/gcc or using a Do
 
 Setting up a compilation environment can be complex, even for a simple code base.
 
-This project demonstrates how to compile with CMake and gcc in three different environments:
+This project demonstrates how to compile with CMake and gcc in two different environments:
 
   * System CMake/gcc
   * Docker
