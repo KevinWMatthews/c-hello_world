@@ -1,6 +1,8 @@
 FROM gcc:8.2.0 as build_cmake
 
-RUN curl --location https://github.com/Kitware/CMake/releases/download/v3.13.1/cmake-3.13.1-Linux-x86_64.sh -o /usr/src/curl-install.sh
+RUN curl \
+    --location https://github.com/Kitware/CMake/releases/download/v3.13.1/cmake-3.13.1-Linux-x86_64.sh \
+    -o /usr/src/curl-install.sh
 
 WORKDIR /usr/src
 RUN chmod u+x curl-install.sh \

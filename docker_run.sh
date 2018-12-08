@@ -69,7 +69,7 @@ command="docker run \
     --workdir ${build_path_target} \
     $@"
 
-echo "Running docker image '${image_name}' as '${container_name}'"
+echo "Running docker container '${container_name}'"
 echo "Building in '$(basename ${build_path_host})'"
 echo "docker run arguments: $@"
 echo ""
