@@ -1,4 +1,4 @@
-# c-hello_world
+# c/hello_world
 
 Print `Hello, World!` using C. Compile with you system's CMake/gcc or using a Docker container.
 
