@@ -11,8 +11,4 @@ FROM gcc:8.2.0
 COPY --from=build_cmake /usr/src/cmake_install/bin/ /usr/local/bin
 COPY --from=build_cmake /usr/src/cmake_install/share/ /usr/local/share
 
-ARG userid=1000
-ARG groupid=1000
-USER ${userid}:${groupid}
-
 WORKDIR /usr/src
