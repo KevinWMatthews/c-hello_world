@@ -60,10 +60,6 @@ build_path_host=${BUILD_PATH_HOST:=?Must specify BUILD_PATH_HOST as environment 
 src_path_target=${SRC_PATH_TARGET:=?Must specify SRC_PATH_TARGET as environment variable}
 build_path_target=${BUILD_PATH_TARGET:=?Must specify BUILD_PATH_TARGET as environment variable}
 
-echo "Running docker image '${image_name}' as '${container_name}'"
-echo "Building in '$(basename ${build_path_host})'"
-echo "docker run arguments: $@"
-echo ""
 command="docker run \
     --rm --name ${container_name} \
     --interactive --tty \
@@ -72,6 +68,11 @@ command="docker run \
 	--mount type=bind,src=${build_path_host},dst=${build_path_target} \
     --workdir ${build_path_target} \
     $@"
+
+echo "Running docker image '${image_name}' as '${container_name}'"
+echo "Building in '$(basename ${build_path_host})'"
+echo "docker run arguments: $@"
+echo ""
 echo ${command}
 echo ""
 ${command}
