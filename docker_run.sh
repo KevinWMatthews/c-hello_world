@@ -6,15 +6,15 @@ usage()
     echo ""
     echo "Naive wrapper around docker run"
     echo ""
-    echo "Sets container options from environment variables,"
-    echo "passes all other command-line options directly to 'docker run' (except --help)."
+    echo "Set container options from environment variables,"
+    echo "pass command-line options directly to 'docker run' (except --help)."
     echo "Configure with a .env file or environment variables."
     echo ""
     echo "Options:"
     echo "  --help              This help text"
     echo ""
     echo "Environment file:"
-    echo "  ENV_FILE            Specify path to environment file for this script"
+    echo "  ENV_FILE            Path to environment file for this script"
     echo ""
     echo "Environment variables:"
     echo "  CONTAINER_NAME      Name of the container that will be created"
@@ -46,7 +46,7 @@ set -- ${args[@]}
 
 if [[ -r "${ENV_FILE}" ]]; then
     echo "Reading env file: ${ENV_FILE}"
-	source ${ENV_FILE}
+    source ${ENV_FILE}
 else
     echo 'Not reading env file'
 fi
@@ -65,7 +65,7 @@ command="docker run \
     --interactive --tty \
     --user ${userid}:${groupid} \
     --mount type=bind,src=${src_path_host},dst=${src_path_target} \
-	--mount type=bind,src=${build_path_host},dst=${build_path_target} \
+    --mount type=bind,src=${build_path_host},dst=${build_path_target} \
     --workdir ${build_path_target} \
     $@"
 
