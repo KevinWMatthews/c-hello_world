@@ -33,7 +33,7 @@ How to build and run the Docker image.
 Build the Docker image that is the basis for containers:
 ```bash
 # docker build --tag <image_name> <relative/path/to/dockerfile/dir>
-$ docker build --tag c_hello_world Dockerfiles/
+$ docker build --tag gcc8-cmake:3.13.1 Dockerfiles/
 ```
 
 For more information, see `docker build --help`.
@@ -61,7 +61,7 @@ Note that Docker requires absolute paths.
 Run the container using:
 ```bash
 # ENV_FILE=<env_file> ./docker_run.sh <image_name>
-$ ENV_FILE=.env ./docker_run.sh c_hello_world
+$ ENV_FILE=.env ./docker_run.sh gcc8-cmake:3.13.1
 ```
 
 Any options that are passed to `docker_run.sh` are passed directly to `docker run`,
