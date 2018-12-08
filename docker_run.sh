@@ -60,13 +60,13 @@ build_path_host=${BUILD_PATH_HOST:=?Must specify BUILD_PATH_HOST as environment 
 src_path_target=${SRC_PATH_TARGET:=?Must specify SRC_PATH_TARGET as environment variable}
 build_path_target=${BUILD_PATH_TARGET:=?Must specify BUILD_PATH_TARGET as environment variable}
 
-command="docker run \
-    --rm --name ${container_name} \
-    --interactive --tty \
-    --user ${userid}:${groupid} \
-    --mount type=bind,src=${src_path_host},dst=${src_path_target} \
-    --mount type=bind,src=${build_path_host},dst=${build_path_target} \
-    --workdir ${build_path_target} \
+command="docker run
+    --rm --name ${container_name}
+    --interactive --tty
+    --user ${userid}:${groupid}
+    --mount type=bind,src=${src_path_host},dst=${src_path_target}
+    --mount type=bind,src=${build_path_host},dst=${build_path_target}
+    --workdir ${build_path_target}
     $@"
 
 echo "Running docker container '${container_name}'"
