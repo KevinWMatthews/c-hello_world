@@ -5,12 +5,21 @@ Print `Hello, World!` using C. Compile with you system's CMake/gcc or using a Do
 
 ## Background
 
-Setting up a compilation environment can be complex, even for a simple code base.
+Setting up a compilation environment can be complex, even for a simple code base. This project demonstrates one approach to a scalable build system.
 
-This project demonstrates how to compile with CMake and gcc in two different environments:
+It can be compiled with CMake and gcc using two different environments:
 
   * System CMake/gcc
   * Docker
+
+
+## Project Structure
+
+  * `c_hello_world/` subdirectory contains the source code.
+  * `build_c_hello_world/` will hold build artifacts.
+  * `Dockerfiles/` contains files for Docker.
+  * `docker_run.sh` is a wrapper around the `docker run` command.
+  * `docs/` contains the source for the documentation pages
 
 
 ## Build Instructions
