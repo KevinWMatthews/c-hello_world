@@ -1,4 +1,4 @@
-# c_hello_world
+# c-hello_world
 
 Print `Hello, World!` using C. Compile with you system's CMake/gcc or using a Docker container.
 
@@ -15,4 +15,4 @@ This project demonstrates how to compile with CMake and gcc in two different env
 
 ## Build Instructions
 
-For detailed build instructions, see the documentation pages.
+For detailed build instructions, see the [documentation pages](https://kevinwmatthews.github.io/c-hello_world/).
