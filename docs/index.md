@@ -50,10 +50,8 @@ have to use it, but it will make things easier.
 `example.env` demonstrates how to configure `docker_run.sh`. There are a few
 environment variables to keep things flexible.
 
-`docs/` contains the source code for the
-[documentation pages](https://kevinwmatthews.github.io/c-hello_world/).
-You can look at it if you'd like, but you're probably better off looking at the published site.
-
+`docs/` contains the source code for these documentation pages. You can look at
+it if you'd like, but you're already reading the result.
 
 
 ### Build Instructions
