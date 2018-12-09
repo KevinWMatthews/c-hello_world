@@ -1,10 +1,10 @@
 ---
 layout: page
-title: docker
+title: Docker
 ---
 
 
-Use docker to compile, build, and run.
+Use Docker to configure, compile, and run.
 
 
 ## Background

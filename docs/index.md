@@ -13,7 +13,7 @@ Configure with CMake. Run with Docker.
 Configuring and compiling a project can be complex, even for a simple code base.
 This project illustrates two different approaches, each using CMake:
 
-  * your [system's tools](system-tools.md)
+  * your system's [CMake and gcc](system-tools.md)
   * a [Docker container](docker.md)
 
 
@@ -58,5 +58,5 @@ it if you'd like, but you're already reading the result.
 
 For detailed build instructions, see one of the following:
 
-  * [system tools](system-tools.md)
+  * [CMake/gcc](system-tools.md)
   * [Docker](docker.md)
