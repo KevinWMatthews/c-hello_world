@@ -1,6 +1,7 @@
 remote_theme: KevinWMatthews/minima
 title: c/hello_world
 author: Kevin W Matthews
+author_url: https://www.kevinwmatthews.com
 description:
   Hello World in C.
   Configured with CMake.
