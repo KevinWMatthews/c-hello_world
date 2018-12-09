@@ -15,13 +15,13 @@ It can be compiled with CMake and gcc using two different environments:
 
 ## Project Structure
 
-  * `hello_world/` subdirectory contains the source code.
-  * `build_hello_world/` will hold build artifacts.
-  * `Dockerfiles/` contains files for Docker.
-  * `docker_run.sh` is a wrapper around the `docker run` command.
+  * `hello_world/` subdirectory contains the source code
+  * `build_hello_world/` will hold build artifacts
+  * `Dockerfiles/` contains files for Docker
+  * `docker_run.sh` is a wrapper around the `docker run` command
   * `docs/` contains the source for the documentation pages
 
 
-## Build Instructions
+## Getting Started
 
-For detailed build instructions, see the [documentation pages](https://kevinwmatthews.github.io/c-hello_world/).
+See the [documentation pages](https://kevinwmatthews.github.io/c-hello_world/) for details.
