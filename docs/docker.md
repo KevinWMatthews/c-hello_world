@@ -25,7 +25,22 @@ the image. It also allows build results to persist on the host
 
 ## Setup
 
-How to build and run the Docker image.
+Before you can run a Docker container, you need a Docker image. Either
+pull an image from DockerHub or build your own.
+
+
+### Pull Docker Image
+
+Pull a pre-built Docker image from
+[DockerHub](https://hub.docker.com/r/kevinwmatthews/gcc-cmake/):
+```bash
+$ docker pull kevinwmatthews/gcc-cmake:8-3.13.1
+```
+
+I like to tag the image with a name that is easy to remember:
+```bash
+$ docker tag kevinwmatthews/gcc-cmake:8-3.13.1 cmake
+```
 
 
 ### Build Docker Image
@@ -34,6 +49,11 @@ Build the Docker image that is the basis for containers:
 ```bash
 # docker build --tag <image_name> <relative/path/to/dockerfile/dir>
 $ docker build --tag gcc8-cmake:3.13.1 Dockerfiles/
+```
+
+I like to tag the image for ease fo use at the command line:
+```bash
+$ docker tag gcc8-cmake:3.13.1 cmake
 ```
 
 For more information, see `docker build --help`.
@@ -61,7 +81,7 @@ Note that Docker requires absolute paths.
 Run the container using:
 ```bash
 # ENV_FILE=<env_file> ./docker_run.sh <image_name>
-$ ENV_FILE=.env ./docker_run.sh gcc8-cmake:3.13.1
+$ ENV_FILE=.env ./docker_run.sh cmake
 ```
 
 Any options that are passed to `docker_run.sh` are passed directly to `docker run`,
