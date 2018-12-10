@@ -48,12 +48,12 @@ $ docker tag kevinwmatthews/gcc-cmake:8-3.13.1 cmake
 Build the Docker image that is the basis for containers:
 ```bash
 # docker build --tag <image_name> <relative/path/to/dockerfile/dir>
-$ docker build --tag gcc8-cmake:3.13.1 Dockerfiles/
+$ docker build --tag gcc-cmake:8-3.13.1 Dockerfiles/
 ```
 
 I like to tag the image for ease fo use at the command line:
 ```bash
-$ docker tag gcc8-cmake:3.13.1 cmake
+$ docker tag gcc-cmake:8-3.13.1 cmake
 ```
 
 For more information, see `docker build --help`.
